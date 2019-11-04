@@ -948,20 +948,20 @@ public:
 #ifndef SPDLOG_NO_NAME
         if (msg.logger_name.size() > 0)
         {
-            dest.push_back('[');
+            dest.push_back('{');
             // fmt_helper::append_str(*msg.logger_name, dest);
             fmt_helper::append_string_view(msg.logger_name, dest);
-            dest.push_back(']');
+            dest.push_back('}');
             dest.push_back(' ');
         }
 #endif
-        dest.push_back('[');
+        //dest.push_back('[');
         // wrap the level name with color
         msg.color_range_start = dest.size();
         // fmt_helper::append_string_view(level::to_c_str(msg.level), dest);
         fmt_helper::append_string_view(level::to_string_view(msg.level), dest);
         msg.color_range_end = dest.size();
-        dest.push_back(']');
+        //dest.push_back(']');
         dest.push_back(' ');
 
         // add source location if present
